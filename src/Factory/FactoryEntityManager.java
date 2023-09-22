@@ -13,8 +13,8 @@ public abstract class FactoryEntityManager {
 	protected EntityManager em;
     private EntityManagerFactory emf;
     
-    public FactoryEntityManager(String db){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(db);
+    public FactoryEntityManager(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("MYSQL");
         this.emf =emf;
         this.em = emf.createEntityManager();
     }
@@ -31,7 +31,7 @@ public abstract class FactoryEntityManager {
 
 		switch (baseDeDatos) {
 		case "MYSQL":
-			return MySQLEntityManagerFactory.getInstance(baseDeDatos);
+			return MySQLEntityManagerFactory.getInstance();
 		case "DERBY":
 			return null;
 		case "POSTGRESQL":

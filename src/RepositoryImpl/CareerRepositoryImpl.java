@@ -21,7 +21,10 @@ public class CareerRepositoryImpl implements CareerRepository {
 	@Override
 	public void insertCareer(Career career) {
 		
-		
+		this.em.getTransaction().begin();
+		this.em.persist(career);
+		this.em.getTransaction().commit();
+		this.em.close();
 	}
 
 	@Override

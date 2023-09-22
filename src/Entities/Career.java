@@ -23,9 +23,8 @@ public class Career {
 		super();
 	}
 
-	public Career(int id, String name) {
+	public Career(String name) {
 		super();
-		this.id = id;
 		this.name = name;
 	}
 

@@ -10,13 +10,13 @@ import interfacesRepository.StudentRepository;
 public class MySQLEntityManagerFactory extends FactoryEntityManager {
 	private static MySQLEntityManagerFactory instance;
 
-	private MySQLEntityManagerFactory(String db) {
-		super(db);
+	private MySQLEntityManagerFactory() {
+		super();
 	}
 
-	public static FactoryEntityManager getInstance(String db) {
+	public static FactoryEntityManager getInstance() {
 		if (instance == null) {
-			instance = new MySQLEntityManagerFactory(db);
+			instance = new MySQLEntityManagerFactory();
 		}
 		return instance;
 	}
