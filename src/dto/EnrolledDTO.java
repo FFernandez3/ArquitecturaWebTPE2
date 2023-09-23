@@ -50,6 +50,14 @@ public class EnrolledDTO {
 
 
 
+	@Override
+	public String toString() {
+		return "EnrolledDTO [careerId=" + careerId + ", careerName=" + careerName + ", studentName=" + studentName
+				+ ", city=" + city + "]";
+	}
+
+
+
 
 	
 	

@@ -36,13 +36,15 @@ public class CareerRepositoryImpl implements CareerRepository {
 
 	@Override
 	public List<EnrolledDTO> getStudentsByCarrerAndCity(String careerName, String city) {
-		this.em.getTransaction().begin();
-		String jpql="SELECT new EnrolledDTO (c.id, c.name, s.name, s.city) FROM Student s JOIN StudentCareer sc ON s.dni = sc.dni JOIN Career c ON sc.careerId = c.careerId WHERE c.name = :careerName AND s.city = :city";
+		//this.em.getTransaction().begin();
+		String jpql="SELECT new dto.EnrolledDTO (c.id, c.name, s.name, s.city) FROM Student s JOIN StudentCareer sc ON s.dni = sc.dni JOIN Career c ON sc.careerId = c.careerId WHERE c.name = :careerName AND s.city = :city";
 		Query query=em.createQuery(jpql);
 		query.setParameter("careerName", careerName); //career_name en tabla y name en la entidad
 		query.setParameter("city", city);
 		List<EnrolledDTO> results=query.getResultList();
-		this.em.getTransaction().commit();
+		//this.em.getTransaction().commit();
+		results.forEach(r->System.out.println(r));
+		//this.em.close();
 		return results;
 	}
 

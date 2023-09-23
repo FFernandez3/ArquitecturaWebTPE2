@@ -28,34 +28,64 @@ public class StudentRepositoryImpl implements StudentRepository {
 
 	@Override
 	public List<StudentDTO> getAllOrderByDni() {
-		this.em.getTransaction().begin();
-		String jpql="SELECT s FROM Student s ORDER BY s.dni DESC";
+		//this.em.getTransaction().begin();
+		String jpql="SELECT new dto.StudentDTO (s.dni, s.name, s.surname, s.genre, s.age, s.studentId, s.city) FROM Student s ORDER BY s.dni DESC";
 		Query query=this.em.createQuery(jpql);
 		List<StudentDTO> results=query.getResultList();
-		this.em.getTransaction().commit();
+		results.forEach(r->System.out.println(r));
+		//this.em.getTransaction().commit();
+		//this.em.close();
 		return results;
 	}
-
+	/*@Override
+	public List<StudentDTO> getStudentByStudentId(long studentId) { //hecha con TypedQuery
+		this.em.getTransaction().begin();
+		String jpql="SELECT new dto.StudentDTO (s.dni, s.name, s.surname, s.genre, s.age, s.studentId, s.city) FROM Student s WHERE s.studentId = :studentId";
+		Query query=this.em.createQuery(jpql);
+		query.setParameter("studentId", studentId);
+		List<StudentDTO> results=query.getResultList();
+		results.forEach(r->System.out.println(r));
+		//this.em.getTransaction().commit();
+	    this.em.close();
+		return results;
+	}*/
 	@Override
 	public StudentDTO getStudentByStudentId(long studentId) { //hecha con TypedQuery
+		//this.em.getTransaction().begin();
+		String jpql="SELECT new dto.StudentDTO (s.dni, s.name, s.surname, s.genre, s.age, s.studentId, s.city) FROM Student s WHERE s.studentId = :studentId";
+		Query query=this.em.createQuery(jpql);
+		query.setParameter("studentId", studentId);
+	    StudentDTO result = (StudentDTO)query.getSingleResult();
+		//this.em.getTransaction().commit();
+	    System.out.println(result);
+	   // this.em.close();
+		return result;
+	}
+	/*@Override
+	public StudentDTO getStudentByStudentId(long studentId) { //hecha con TypedQuery
 		this.em.getTransaction().begin();
-		String jpql="SELECT s FROM Student s WHERE s.id = :studentId;";
+		String jpql="SELECT new dto.StudentDTO (s.dni, s.name, s.surname, s.genre, s.age, s.studentId, s.city) FROM Student s WHERE s.id = :studentId";
 		TypedQuery<StudentDTO> typedQuery=this.em.createQuery(jpql, StudentDTO.class);
 		typedQuery.setParameter("studentId", studentId);
 	    StudentDTO result = (StudentDTO)typedQuery.getSingleResult();
-		this.em.getTransaction().commit();
+		//this.em.getTransaction().commit();
+	    this.em.close();
 		return result;
-	}
+	}*/
 
 	@Override
 	public List<StudentDTO> getAllStudentsByGenre(char genre) {
-		this.em.getTransaction().begin();
-		String jpql="SELECT new StudentDTO (s.dni, s.name, s.surname, s.genre, s.age)"+ 
+		//this.em.getTransaction().begin();
+		String jpql="SELECT new dto.StudentDTO (s.dni, s.name, s.surname, s.genre, s.age, s.studentId, s.city)"+ 
 		"FROM Student s"
 		+ " WHERE s.genre LIKE ?1";
 		Query query=this.em.createQuery(jpql);
 		query.setParameter(1, genre);
 		List<StudentDTO> results=query.getResultList();
+		
+		results.forEach(r->System.out.println(r));
+		//this.em.close();
+		
 		return results;
 	}
 

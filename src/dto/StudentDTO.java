@@ -64,6 +64,12 @@ public class StudentDTO {
 	public String getCity() {
 		return city;
 	}
+
+	@Override
+	public String toString() {
+		return "StudentDTO [dni=" + dni + ", name=" + name + ", surname=" + surname + ", genre=" + genre + ", age="
+				+ age + ", studentId=" + studentId + ", city=" + city + "]";
+	}
 	
 	
 

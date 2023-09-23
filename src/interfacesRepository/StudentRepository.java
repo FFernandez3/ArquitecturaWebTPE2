@@ -10,7 +10,7 @@ public interface StudentRepository {
 	List<StudentDTO> getAllOrderByDni(); //c
 	StudentDTO getStudentByStudentId(long studentId);//d
 	List<StudentDTO> getAllStudentsByGenre(char genre);//e
-	
+	//List<StudentDTO> getStudentByStudentId(long studentId);
 	
 	
 }

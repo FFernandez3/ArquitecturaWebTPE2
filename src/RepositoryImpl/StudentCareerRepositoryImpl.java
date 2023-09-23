@@ -30,11 +30,12 @@ public class StudentCareerRepositoryImpl implements StudentCareerRepository {
 
 	@Override
 	public List<EnrolledDTO> getCareersOrderByQuantity() {
-		this.em.getTransaction().begin();
-		String jpql="SELECT c.id, COUNT(*) AS quantity FROM StudentCareer c GROUP BY c.id ORDER BY quantity DESC";
+		//this.em.getTransaction().begin();
+		String jpql="SELECT new EnrolledDTO (c.id, c.name, s.name, s.city), COUNT(*) AS quantity FROM StudentCareer c GROUP BY c.id ORDER BY quantity DESC";
 		TypedQuery<EnrolledDTO> typedQuery=this.em.createQuery(jpql, EnrolledDTO.class);
 	    List<EnrolledDTO> results = typedQuery.getResultList();
-		this.em.getTransaction().commit();
+		//this.em.getTransaction().commit();
+	   // this.em.close();
 		return  results;
 	}
 
@@ -52,6 +53,7 @@ public class StudentCareerRepositoryImpl implements StudentCareerRepository {
 		this.em.getTransaction().begin();
 		String jpql="";
 		this.em.getTransaction().commit();
+		this.em.close();
 		return null;
 	}
 

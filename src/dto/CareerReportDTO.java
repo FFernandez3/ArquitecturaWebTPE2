@@ -51,6 +51,14 @@ public class CareerReportDTO {
 	public Integer getGraduationYear() {
 		return graduationYear;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "CareerReportDTO [careerId=" + careerId + ", careerName=" + careerName + ", dni=" + dni + ", entryYear="
+				+ entryYear + ", graduationYear=" + graduationYear + "]";
+	}
 	
 
 }
