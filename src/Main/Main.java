@@ -20,21 +20,18 @@ public class Main {
 		Career c1 = new Career("TUDAI");
 		Career c2 = new Career("Ingenieria");
 		
-		//Student s1 = new Student(32472514, "Maria", "Conti", 'F', 28, 25678, "Tandil");
-		//Student s2 = new Student(39290710, "Florencia", "Fernandez", 'F', 22, 25999, "Tandil");
+		Student s1 = new Student(32472514L, "Maria", "Conti", 'F', 28, 25678L, "Tandil");
+		Student s2 = new Student(39290710L, "Florencia", "Fernandez", 'F', 22, 25999L, "Tandil");
 		
-		//StudentCareer sc1 = new StudentCareer(c2,s2,null,2024, false);
-		
-		
-		
-		//cri.insertCareer(c2);ya esta
-		//sri.insertStudent(s1);ya esta
-		//sri.insertStudent(s2);ya esta
-		//scri.insertStudentCareer(sc1);
+		StudentCareer sc1 = new StudentCareer(c2,s2,null,2024, false);
 		
 		
+		cri.insertCareer(c1);
+		cri.insertCareer(c2);
+		sri.insertStudent(s1);
+		sri.insertStudent(s2);
+		scri.insertStudentCareer(sc1);
 		
-
 	}
 
 }
