@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import Entities.Career;
 import Entities.Student;
 import interfacesRepository.StudentRepository;
 
@@ -18,7 +19,10 @@ public class StudentRepositoryImpl implements StudentRepository {
 
 	@Override
 	public void insertStudent(Student student) {
-		// TODO Auto-generated method stub
+		 this.em.getTransaction().begin();
+	     this.em.persist(student);
+	     this.em.getTransaction().commit();
+	     
 		
 	}
 
@@ -39,6 +43,13 @@ public class StudentRepositoryImpl implements StudentRepository {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+	public Student saveStudent(Student s) {
+		if (s.getDni() == null) {
+		em.persist(s);
+		} else {
+		s = em.merge(s);
+		}
+		return s;
+		}
 
 }

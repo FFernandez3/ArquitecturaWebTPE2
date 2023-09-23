@@ -1,6 +1,8 @@
 package Main;
 
 import Entities.Career;
+import Entities.Student;
+import Entities.StudentCareer;
 import Factory.FactoryEntityManager;
 import RepositoryImpl.CareerRepositoryImpl;
 import RepositoryImpl.StudentCareerRepositoryImpl;
@@ -16,8 +18,21 @@ public class Main {
 		StudentRepositoryImpl sri = MYSQL.getStudentRepositoryImpl();
 		
 		Career c1 = new Career("TUDAI");
+		Career c2 = new Career("Ingenieria");
 		
-		cri.insertCareer(c1);
+		//Student s1 = new Student(32472514, "Maria", "Conti", 'F', 28, 25678, "Tandil");
+		//Student s2 = new Student(39290710, "Florencia", "Fernandez", 'F', 22, 25999, "Tandil");
+		
+		//StudentCareer sc1 = new StudentCareer(c2,s2,null,2024, false);
+		
+		
+		
+		//cri.insertCareer(c2);ya esta
+		//sri.insertStudent(s1);ya esta
+		//sri.insertStudent(s2);ya esta
+		//scri.insertStudentCareer(sc1);
+		
+		
 		
 
 	}

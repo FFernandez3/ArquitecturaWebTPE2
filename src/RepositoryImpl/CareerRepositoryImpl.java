@@ -24,7 +24,7 @@ public class CareerRepositoryImpl implements CareerRepository {
 		this.em.getTransaction().begin();
 		this.em.persist(career);
 		this.em.getTransaction().commit();
-		this.em.close();
+		
 	}
 
 	@Override
@@ -38,5 +38,14 @@ public class CareerRepositoryImpl implements CareerRepository {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	
+	public Career saveCareer(Career c) {
+	if (c.getId() == null) {
+	em.persist(c);
+	} else {
+	c = em.merge(c);
+	}
+	return c;
+	}
 }

@@ -1,5 +1,6 @@
 package Entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,11 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Career {
+public class Career implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@Column(name = "career_name")
+	private Integer id;
+	@Column(name = "career_name", unique= true)
 	private String name;
 	@OneToMany(mappedBy = "student")
 	private List<StudentCareer> students;
@@ -28,11 +29,11 @@ public class Career {
 		this.name = name;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

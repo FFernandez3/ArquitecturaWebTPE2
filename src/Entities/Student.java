@@ -1,5 +1,6 @@
 package Entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Student {
+public class Student implements Serializable{
 	@Id
-	private long dni;
+	private Long dni;
 	@Column(nullable=false)
 	private String name;
 	@Column(nullable=false)
@@ -21,7 +22,7 @@ public class Student {
 	@Column(nullable=false)
 	private int age;
 	@Column(nullable=false)
-	private long studentId;
+	private Long studentId;
 	@Column(nullable=false)
 	private String city;
 	@OneToMany(mappedBy="career")
@@ -33,7 +34,7 @@ public class Student {
 		this.careers=new ArrayList<StudentCareer>();
 	}
 	
-	public Student(long dni, String name, String surname, char genre, int age, long studentId, String city) {
+	public Student(Long dni, String name, String surname, char genre, int age, Long studentId, String city) {
 		super();
 		this.dni = dni;
 		this.name = name;
@@ -48,10 +49,10 @@ public class Student {
 		return new ArrayList<StudentCareer>(this.careers);
 	}
 	
-	public long getDni() {
+	public Long getDni() {
 		return dni;
 	}
-	public void setDni(long dni) {
+	public void setDni(Long dni) {
 		this.dni = dni;
 	}
 	public String getName() {
@@ -78,10 +79,10 @@ public class Student {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public long getStudentId() {
+	public Long getStudentId() {
 		return studentId;
 	}
-	public void setStudentId(long studentId) {
+	public void setStudentId(Long studentId) {
 		this.studentId = studentId;
 	}
 	public String getCity() {
