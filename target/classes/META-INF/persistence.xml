@@ -33,7 +33,7 @@
 				value="com.mysql.cj.jdbc.Driver" />
 
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/pagos" />
+				value="jdbc:mysql://localhost:3306/ArquiWeb_entregable2_grupo18?createDatabaseIfNotExist=true" />
 
 			<property name="javax.persistence.jdbc.user" value="root" />
 
@@ -41,7 +41,7 @@
 
 			<!-- Propiedad para la generacion automatica del esquema de base de datos -->
 
-			<!--property name="hibernate.hbm2ddl.auto" value="create-database"/-->
+		
     
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 

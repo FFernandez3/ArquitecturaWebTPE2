@@ -11,11 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Career implements Serializable{
+public class Career implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name = "career_name", unique= true)
+	@Column(name = "career_name", unique = true)
 	private String name;
 	@OneToMany(mappedBy = "student")
 	private List<StudentCareer> students;

@@ -23,19 +23,19 @@ public class MySQLEntityManagerFactory extends FactoryEntityManager {
 
 	@Override
 	public StudentRepositoryImpl getStudentRepositoryImpl() {
-		
+
 		return new StudentRepositoryImpl(this.em);
 	}
 
 	@Override
 	public CareerRepositoryImpl getCareerRepositoryImpl() {
-		
+
 		return new CareerRepositoryImpl(this.em);
 	}
 
 	@Override
 	public StudentCareerRepositoryImpl getStudentCareerRepositoryImpl() {
-		
+
 		return new StudentCareerRepositoryImpl(this.em);
 	}
 

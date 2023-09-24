@@ -8,35 +8,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 @Entity
 public class StudentCareer implements Serializable {
 	@Id
-	@ManyToOne(cascade=CascadeType.MERGE)
-	@JoinColumn(name="career", referencedColumnName="id")
+	@ManyToOne(cascade = CascadeType.MERGE)
+	// @MapsId("id")
+	@JoinColumn(name = "career", referencedColumnName = "id")
 	private Career career;
-	
+
 	@Id
-	@ManyToOne(cascade=CascadeType.MERGE)
-	@JoinColumn(name="student", referencedColumnName="dni")
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "student", referencedColumnName = "dni")
 	private Student student;
-	
-	@Column(nullable=true)
+
+	@Column(nullable = true)
 	private Integer graduationYear;
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private Integer entryYear;
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private boolean isGraduated;
-	
-	
-	
+
 	public StudentCareer() {
 		super();
 	}
-	
-	public StudentCareer(Career career, Student student, Integer graduationYear, Integer entryYear, boolean isGraduated) {
+
+	public StudentCareer(Career career, Student student, Integer graduationYear, Integer entryYear,
+			boolean isGraduated) {
 		super();
 		this.career = career;
 		this.student = student;
@@ -44,8 +46,6 @@ public class StudentCareer implements Serializable {
 		this.entryYear = entryYear;
 		this.isGraduated = isGraduated;
 	}
-	
-	
 
 	public Career getCareer() {
 		return career;
@@ -66,28 +66,30 @@ public class StudentCareer implements Serializable {
 	public int getGraduationYear() {
 		return graduationYear;
 	}
+
 	public void setGraduationYear(int graduationYear) {
 		this.graduationYear = graduationYear;
 	}
+
 	public int getEntryYear() {
 		return entryYear;
 	}
+
 	public void setEntryYear(int entryYear) {
 		this.entryYear = entryYear;
 	}
+
 	public boolean isGraduated() {
 		return isGraduated;
 	}
+
 	public void setGraduated() {
-		if(graduationYear==null) {
-			this.isGraduated=false;
+		if (graduationYear == null) {
+			this.isGraduated = false;
+		} else {
+			this.isGraduated = true;
 		}
-		else {
-			this.isGraduated=true;
-		}
-	
+
 	}
-	
-	
 
 }
